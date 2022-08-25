@@ -8,8 +8,8 @@ workflow virusbreakend {
   }
 
   parameter_meta {
-    inputBam: "STAR BAM aligned to genome"
-    indexBam: "Index for STAR Bam file"
+    inputBam: "WGS BMPP BAM aligned to genome"
+    indexBam: "Index for WGS BMPP Bam file"
   }
 
   call runVirusbreakend {
@@ -19,19 +19,23 @@ workflow virusbreakend {
 }
 
   output {
-    File fusionsPredictions     = runArriba.fusionPredictions
-    File fusionDiscarded        = runArriba.fusionDiscarded
-    File fusionFigure           = runArriba.fusionFigure
+    File integrationbreakpointvcf     = runVirusbreakend.integrationbreakpointvcf
+    File kraken2report        = runVirusbreakend.coveragestats
+    File coveragestats           = runVirusbreakend.coveragestats
   }
 
   meta {
-    author: "Alexander Fortuna"
-    email: "alexander.fortuna@oicr.on.ca"
-    description: "Workflow that takes the Bam output from STAR and detects RNA-seq fusion events. It is required to run STAR with the option --chimOutType 'WithinBAM HardClip Junctions' as per https://github.com/oicr-gsi/star to create a BAM file compatible with both the arriba and STARFusion workflows. For additional parameter suggestions please see the arriba github link below."
+    author: "Alexander Fortuna and Felix Beaudry"
+    email: "alexander.fortuna@oicr.on.ca & felix.beaudry@oicr.on.ca"
+    description: "Workflow that takes the Bam output from BMPP and reports viral integration sites."
     dependencies: [
     {
-       name: "arriba/2.0",
-       url: "https://github.com/suhrig/arriba"
+       name: "virusbreakend",
+       url: "https://doi.org/10.1093/bioinformatics/btab343"
+     },
+     {
+       name: "gridss",
+       url: "https://github.com/PapenfussLab/gridss"
      }
     ]
   }
@@ -80,16 +84,16 @@ task runVirusbreakend {
   }
 
   output {
-      File fusionPredictions        = "~{outputFileNamePrefix}.fusions.tsv"
-      File fusionDiscarded          = "~{outputFileNamePrefix}.fusions.discarded.tsv"
-      File fusionFigure             = "~{outputFileNamePrefix}.fusions.pdf"
+      File integrationbreakpointvcf       = "fusions.tsv"
+      File kraken2report         = "fusions.discarded.tsv"
+      File coveragestats            = "fusions.pdf"
   }
 
   meta {
     output_meta: {
-      fusionPredictions: "Fusion output tsv",
-      fusionDiscarded:   "Discarded fusion output tsv",
-      fusionFigure: "PDF rendering of candidate fusions"
+      integrationbreakpointvcf: "A VCF containing the integration breakpoints",
+      kraken2report: "The kraken2 report of the virus(es) for which viral integration was run upon",
+      coveragestats: "Coverage statistics of the virus(es) for which viral integration was run upon"
     }
   }
 }
