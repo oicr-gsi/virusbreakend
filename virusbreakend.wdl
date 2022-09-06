@@ -45,7 +45,7 @@ task runVirusbreakend {
   input {
     File   inputBam
     File   indexBam
-    String modules = "gridss-conda/2.13.2 virusbreakenddb/20210401 hmftools-data/hg38"
+    String modules = "gridss-conda/2.13.2 virusbreakend-db/20210401 hmftools-data/hg38"
     String database = "$VIRUSBREAKEND_DB_ROOT/"
     String genome = "$HMFTOOLS_DATA_ROOT/hg38_random.fa"
     String gridss = "$GRIDSS_CONDA_ROOT/share/gridss-2.13.2-1/gridss.jar"
@@ -68,11 +68,11 @@ task runVirusbreakend {
       set -euo pipefail
 
       virusbreakend \
-      --jar {gridss} \
-      --kraken2db {database} \
-      --reference {genome} \
-      --output virusbreakend.vcf \
-      {inputBam}
+      --jar ~{gridss} \
+      --kraken2db ~{database} \
+      --reference ~{genome} \
+      --output output \
+      ~{inputBam}
 
   >>>
 
@@ -84,9 +84,9 @@ task runVirusbreakend {
   }
 
   output {
-      File integrationbreakpointvcf       = "fusions.tsv"
-      File kraken2report         = "fusions.discarded.tsv"
-      File coveragestats            = "fusions.pdf"
+      File integrationbreakpointvcf       = "output.summary.tsv"
+      File kraken2report         = "output.kraken2.report.viral.txt"
+      File coveragestats            = "output.summary.coverage.tsv"
   }
 
   meta {
