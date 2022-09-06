@@ -5,17 +5,20 @@ workflow virusbreakend {
   input {
     File inputBam
     File indexBam
+    String outputFileNamePrefix
   }
 
   parameter_meta {
     inputBam: "WGS BMPP BAM aligned to genome"
     indexBam: "Index for WGS BMPP Bam file"
+    outputFileNamePrefix: "prefix for the output file name"
   }
 
   call runVirusbreakend {
     input:
     inputBam = inputBam,
-    indexBam = indexBam
+    indexBam = indexBam,
+    outputFileNamePrefix = outputFileNamePrefix
 }
 
   output {
@@ -45,6 +48,7 @@ task runVirusbreakend {
   input {
     File   inputBam
     File   indexBam
+    String outputFileNamePrefix
     String modules = "gridss-conda/2.13.2 virusbreakenddb/20210401 hmftools-data/hg38"
     String database = "$VIRUSBREAKEND_DB_ROOT/"
     String genome = "$HMFTOOLS_DATA_ROOT/hg38_random.fa"
@@ -57,6 +61,7 @@ task runVirusbreakend {
   parameter_meta {
     inputBam: "WGS bam"
     indexBam: "WGS bam index"
+    outputFileNamePrefix: "output filename"
     modules: "Names and versions of modules to load"
     genome: "Path to loaded genome"
     threads: "Requested CPU threads"
@@ -71,7 +76,7 @@ task runVirusbreakend {
       --jar {gridss} \
       --kraken2db {database} \
       --reference {genome} \
-      --output virusbreakend.vcf \
+      --output ~{outputFileNamePrefix} \
       {inputBam}
 
   >>>
