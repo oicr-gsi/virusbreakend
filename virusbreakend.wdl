@@ -23,8 +23,6 @@ workflow virusbreakend {
 
   output {
     File integrationbreakpointvcf     = runVirusbreakend.integrationbreakpointvcf
-    File kraken2report        = runVirusbreakend.coveragestats
-    File coveragestats           = runVirusbreakend.coveragestats
     File outputsummary = runVirusbreakend.outputsummary
   }
 
@@ -94,16 +92,12 @@ task runVirusbreakend {
   output {
       File integrationbreakpointvcf       = "~{outputFileNamePrefix}.virusbreakend.vcf"
       File outputsummary = "~{outputFileNamePrefix}.virusbreakend.vcf.summary.tsv"
-      File kraken2report         = "~{outputFileNamePrefix}.virusbreakend.vcf.virusbreakend.working/~{outputFileNamePrefix}.virusbreakend.vcf.kraken2.report.viral.txt"
-      File coveragestats            = "~{outputFileNamePrefix}.virusbreakend.vcf.virusbreakend.working/~{outputFileNamePrefix}.virusbreakend.vcf.summary.coverage.tsv"
   }
 
   meta {
     output_meta: {
       outputsummary: "a summary of results from the virusbreakend workflow",
       integrationbreakpointvcf: "A VCF containing the integration breakpoints",
-      kraken2report: "The kraken2 report of the virus(es) for which viral integration was run upon",
-      coveragestats: "Coverage statistics of the virus(es) for which viral integration was run upon"
     }
   }
 }
