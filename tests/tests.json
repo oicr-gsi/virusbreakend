@@ -1,0 +1,23 @@
+{
+  "defaults": {
+    "description": "virusbreakend workflow test",
+    "metrics_calculate": "calculate.sh",
+    "metrics_compare": "compare.sh",
+    "output_metrics_dir": "/.mounts/labs/gsi/testdata/virusbreakend/1.0/output_metrics",
+    "parameters": {
+      "wdl_options": {
+        "write_to_cache": false,
+        "read_from_cache": false
+      }
+    }
+  },
+  "tests": [{
+    "id": "virusbreakend_test",
+    "parameters": {
+      "wdl_inputs": {
+        "virusbreakend.inputBam": "/.mounts/labs/gsi/testdata/virusbreakend/1.0/input_data/OCT_011237.bam",
+        "virusbreakend.indexBam": "/.mounts/labs/gsi/testdata/virusbreakend/1.0/input_data/OCT_011237.bam.bai"
+      }
+    }
+  }]
+}
