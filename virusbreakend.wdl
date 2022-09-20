@@ -97,7 +97,7 @@ task runVirusbreakend {
   meta {
     output_meta: {
       outputsummary: "a summary of results from the virusbreakend workflow",
-      integrationbreakpointvcf: "A VCF containing the integration breakpoints",
+      integrationbreakpointvcf: "A VCF containing the integration breakpoints"
     }
   }
 }
