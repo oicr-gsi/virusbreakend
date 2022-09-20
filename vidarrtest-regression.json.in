@@ -13,7 +13,7 @@
                 },
                 "type": "EXTERNAL"
             },
-            "virusbreakend.indexBam":
+            "virusbreakend.indexBam": {
                 "contents": {
                     "configuration": "/.mounts/labs/gsi/testdata/virusbreakend/1.0/input_data/OCT_011237.bam.bai",
                     "externalIds": [
@@ -36,12 +36,11 @@
         "metadata": {
             "contents": [
                 {
-                    #check this  
                     "outputDirectory": "@SCRATCH@/@DATE@_Workflow_virusbreakend_@JENKINSID@"
                 }
             ],
             "type": "ALL"
-        }
+        },
         "validators": [
             {
                 "metrics_calculate": "@CHECKOUT@/calculate.sh",
