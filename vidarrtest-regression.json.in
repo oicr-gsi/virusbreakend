@@ -3,7 +3,7 @@
         "arguments": {
             "virusbreakend.inputBam": {
                 "contents": {
-                    "configuration": "virusbreakend.inputBam": "/.mounts/labs/gsi/testdata/virusbreakend/1.0/input_data/OCT_011237.bam",
+                    "configuration": "/.mounts/labs/gsi/testdata/virusbreakend/1.0/input_data/OCT_011237.bam",
                     "externalIds": [
                         {
                             "id": "TEST",
