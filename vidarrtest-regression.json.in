@@ -30,10 +30,10 @@
             "virusbreakend.runVirusbreakend.database": "$VIRUSBREAKEND_DB_ROOT/",
             "virusbreakend.runVirusbreakend.genome": "$HMFTOOLS_DATA_ROOT/hg38_random.fa",
             "virusbreakend.runVirusbreakend.gridss": "$GRIDSS_CONDA_ROOT/share/gridss-2.13.2-1/gridss.jar",
-            "virusbreakend.runVirusbreakend.threads": null, //default 8
-            "virusbreakend.runVirusbreakend.jobMemory": null, //default 64
-            "virusbreakend.runVirusbreakend.jobMemory": null, //default 64
-            "virusbreakend.runVirusbreakend.timeout": null //default 72
+            "virusbreakend.runVirusbreakend.threads": null, 
+            "virusbreakend.runVirusbreakend.jobMemory": null,
+            "virusbreakend.runVirusbreakend.jobMemory": null, 
+            "virusbreakend.runVirusbreakend.timeout": null 
         },
         "description": "virusbreakend workflow test",
         "engineArguments": {
