@@ -1,53 +1,55 @@
-{
-    "arguments": {
-        "virusbreakend.inputBam": {
-            "contents": {
-                "configuration": "virusbreakend.inputBam": "/.mounts/labs/gsi/testdata/virusbreakend/1.0/input_data/OCT_011237.bam",
-                "externalIds": [
-                    {
-                        "id": "TEST",
-                        "provider": "TEST"
-                    }
-                ]
+[
+    {
+        "arguments": {
+            "virusbreakend.inputBam": {
+                "contents": {
+                    "configuration": "virusbreakend.inputBam": "/.mounts/labs/gsi/testdata/virusbreakend/1.0/input_data/OCT_011237.bam",
+                    "externalIds": [
+                        {
+                            "id": "TEST",
+                            "provider": "TEST"
+                        }
+                    ]
+                },
+                "type": "EXTERNAL"
             },
-            "type": "EXTERNAL"
-        },
-        "virusbreakend.indexBam":
-            "contents": {
-                "configuration": "/.mounts/labs/gsi/testdata/virusbreakend/1.0/input_data/OCT_011237.bam.bai",
-                "externalIds": [
-                    {
-                        "id": "TEST",
-                        "provider": "TEST"
-                    }
-                ]
+            "virusbreakend.indexBam":
+                "contents": {
+                    "configuration": "/.mounts/labs/gsi/testdata/virusbreakend/1.0/input_data/OCT_011237.bam.bai",
+                    "externalIds": [
+                        {
+                            "id": "TEST",
+                            "provider": "TEST"
+                        }
+                    ]
+                },
+                "type": "EXTERNAL"
             },
-            "type": "EXTERNAL"
+            "virusbreakend.outputFileNamePrefix": "OCT_011237.virusbreakend"
         },
-        "virusbreakend.outputFileNamePrefix": "OCT_011237.virusbreakend"
-    },
-    "description": "virusbreakend workflow test",
-    "engineArguments": {
-        "write_to_cache": false,
-        "read_from_cache": false
-    },
-    "id": "virusbreakend_test",
-    "metadata": {
-        "contents": [
-            {
-                #check this  
-                "outputDirectory": "@SCRATCH@/@DATE@_Workflow_virusbreakend_@JENKINSID@"
-            }
-        ],
-        "type": "ALL"
-    }
-    "validators": [
-        {
-            "metrics_calculate": "@CHECKOUT@/calculate.sh",
-            "metrics_compare": "@CHECKOUT@/compare.sh",
-            "output_metrics": "/.mounts/labs/gsi/testdata/virusbreakend/1.0/output_metrics",
-            "type": "script"
+        "description": "virusbreakend workflow test",
+        "engineArguments": {
+            "write_to_cache": false,
+            "read_from_cache": false
+        },
+        "id": "virusbreakend_test",
+        "metadata": {
+            "contents": [
+                {
+                    #check this  
+                    "outputDirectory": "@SCRATCH@/@DATE@_Workflow_virusbreakend_@JENKINSID@"
+                }
+            ],
+            "type": "ALL"
         }
-    ]
-}
+        "validators": [
+            {
+                "metrics_calculate": "@CHECKOUT@/calculate.sh",
+                "metrics_compare": "@CHECKOUT@/compare.sh",
+                "output_metrics": "/.mounts/labs/gsi/testdata/virusbreakend/1.0/output_metrics",
+                "type": "script"
+            }
+        ]
+    }
+]
 
