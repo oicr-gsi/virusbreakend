@@ -24,6 +24,7 @@
             },
             "type": "EXTERNAL"
         },
+        "virusbreakend.outputFileNamePrefix": "OCT_011237.virusbreakend"
     },
     "description": "virusbreakend workflow test",
     "engineArguments": {
