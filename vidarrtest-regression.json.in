@@ -25,7 +25,7 @@
                 },
                 "type": "EXTERNAL"
             },
-            "virusbreakend.outputFileNamePrefix": "OCT_011237.virusbreakend",
+            "virusbreakend.outputFileNamePrefix": "OCT_011237",
             "virusbreakend.runVirusbreakend.modules": "gridss-conda/2.13.2 virusbreakend-db/20210401 hmftools-data/hg38",
             "virusbreakend.runVirusbreakend.database": "$VIRUSBREAKEND_DB_ROOT/",
             "virusbreakend.runVirusbreakend.genome": "$HMFTOOLS_DATA_ROOT/hg38_random.fa",
