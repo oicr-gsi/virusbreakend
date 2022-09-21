@@ -61,8 +61,8 @@
         },
         "validators": [
             {
-                "metrics_calculate": "@CHECKOUT@/calculate.sh",
-                "metrics_compare": "@CHECKOUT@/compare.sh",
+                "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
+                "metrics_compare": "@CHECKOUT@/tests/compare.sh",
                 "output_metrics": "/.mounts/labs/gsi/testdata/virusbreakend/1.0/output_metrics",
                 "type": "script"
             }
