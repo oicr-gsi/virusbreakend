@@ -17,20 +17,20 @@ workflow virusbreakend {
   }
 
   if (reference == "hg38") {
-          String hg38virusbreakend_modules = "gridss-conda/2.13.2 virusbreakend-db/20210401 hmftools-data/hg38"
-          String hg38virusbreakend_ref = "$HMFTOOLS_DATA_ROOT/hg38_random.fa"
+          String hg38DataModules = "gridss-conda/2.13.2 virusbreakend-db/20210401 hmftools-data/hg38"
+          String hg38Genome = "$HMFTOOLS_DATA_ROOT/hg38_random.fa"
   }
 
-  String virusbreakend_modules = select_first([hg38virusbreakend_modules])
-  String virusbreakend_ref = select_first([hg38virusbreakend_ref])
+  String dataModules = select_first([hg38DataModules])
+  String genome = select_first([hg38Genome])
 
   call runVirusbreakend {
     input:
     inputBam = inputBam,
     indexBam = indexBam,
     outputFileNamePrefix = outputFileNamePrefix,
-    modules = virusbreakend_modules,
-    virusbreakend_ref = virusbreakend_ref
+    modules = dataModules,
+    genome = genome
 }
 
   output {
@@ -61,8 +61,9 @@ task runVirusbreakend {
     File   indexBam
     String virusbreakend_modules
     String outputFileNamePrefix
+    String genome
+    String dataModules
     String database = "$VIRUSBREAKEND_DB_ROOT/"
-    String virusbreakend_ref
     String gridss = "$GRIDSS_CONDA_ROOT/share/gridss-2.13.2-1/gridss.jar"
     Int threads = 8
     Int jobMemory = 64
@@ -88,7 +89,7 @@ task runVirusbreakend {
       virusbreakend \
       --jar ~{gridss} \
       --kraken2db ~{database} \
-      --reference ~{virusbreakend_ref} \
+      --reference ~{genome} \
       --output ~{outputFileNamePrefix}.virusbreakend.vcf \
       ~{inputBam}
 
@@ -96,7 +97,7 @@ task runVirusbreakend {
 
   runtime {
     memory:  "~{jobMemory} GB"
-    modules: "~{modules}"
+    modules: "~{modules}" "~{modules}"
     cpu:     "~{threads}"
     timeout: "~{timeout}"
   }
