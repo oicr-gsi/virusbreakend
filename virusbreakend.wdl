@@ -6,19 +6,31 @@ workflow virusbreakend {
     File inputBam
     File indexBam
     String outputFileNamePrefix
+    String reference
   }
 
   parameter_meta {
     inputBam: "WGS BMPP BAM aligned to genome"
     indexBam: "Index for WGS BMPP Bam file"
     outputFileNamePrefix: "prefix for the output file name"
+    reference: "The genome reference build. For example: hg19, hg38, mm10"
   }
+
+  if (reference == "hg38") {
+          String hg38virusbreakend_modules = "gridss-conda/2.13.2 virusbreakend-db/20210401 hmftools-data/hg38"
+          String hg38virusbreakend_ref = "$HMFTOOLS_DATA_ROOT/hg38_random.fa"
+  }
+
+  String virusbreakend_modules = select_first([hg38virusbreakend_modules])
+  String virusbreakend_ref = select_first([hg38virusbreakend_ref])
 
   call runVirusbreakend {
     input:
     inputBam = inputBam,
     indexBam = indexBam,
-    outputFileNamePrefix = outputFileNamePrefix
+    outputFileNamePrefix = outputFileNamePrefix,
+    modules = virusbreakend_modules,
+    virusbreakend_ref = virusbreakend_ref
 }
 
   output {
