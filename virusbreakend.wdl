@@ -59,10 +59,10 @@ task runVirusbreakend {
   input {
     File   inputBam
     File   indexBam
-    String modules = "gridss-conda/2.13.2 virusbreakend-db/20210401 hmftools-data/hg38"
+    String virusbreakend_modules
     String outputFileNamePrefix
     String database = "$VIRUSBREAKEND_DB_ROOT/"
-    String genome = "$HMFTOOLS_DATA_ROOT/hg38_random.fa"
+    String virusbreakend_ref
     String gridss = "$GRIDSS_CONDA_ROOT/share/gridss-2.13.2-1/gridss.jar"
     Int threads = 8
     Int jobMemory = 64
@@ -88,7 +88,7 @@ task runVirusbreakend {
       virusbreakend \
       --jar ~{gridss} \
       --kraken2db ~{database} \
-      --reference ~{genome} \
+      --reference ~{virusbreakend_ref} \
       --output ~{outputFileNamePrefix}.virusbreakend.vcf \
       ~{inputBam}
 
