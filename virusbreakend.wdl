@@ -17,7 +17,7 @@ workflow virusbreakend {
   }
 
   if (reference == "hg38") {
-          String hg38DataModules = "gridss-conda/2.13.2 virusbreakend-db/20210401 hmftools-data/hg38"
+          String hg38DataModules = "virusbreakend-db/20210401 hmftools-data/hg38"
           String hg38Genome = "$HMFTOOLS_DATA_ROOT/hg38_random.fa"
   }
 
@@ -29,7 +29,6 @@ workflow virusbreakend {
     inputBam = inputBam,
     indexBam = indexBam,
     outputFileNamePrefix = outputFileNamePrefix,
-    dataModules = dataModules,
     genome = genome
 }
 
@@ -61,7 +60,8 @@ task runVirusbreakend {
     File   indexBam
     String outputFileNamePrefix
     String genome
-    String modules = dataModules
+    String dataModules
+    String modules = "gridss-conda/2.13.2"
     String database = "$VIRUSBREAKEND_DB_ROOT/"
     String gridss = "$GRIDSS_CONDA_ROOT/share/gridss-2.13.2-1/gridss.jar"
     Int threads = 8
