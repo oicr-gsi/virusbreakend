@@ -29,7 +29,7 @@ workflow virusbreakend {
     inputBam = inputBam,
     indexBam = indexBam,
     outputFileNamePrefix = outputFileNamePrefix,
-    modules = dataModules,
+    dataModules = dataModules,
     genome = genome
 }
 
@@ -59,10 +59,9 @@ task runVirusbreakend {
   input {
     File   inputBam
     File   indexBam
-    String virusbreakend_modules
     String outputFileNamePrefix
     String genome
-    String dataModules
+    String modules = dataModules
     String database = "$VIRUSBREAKEND_DB_ROOT/"
     String gridss = "$GRIDSS_CONDA_ROOT/share/gridss-2.13.2-1/gridss.jar"
     Int threads = 8
@@ -97,7 +96,7 @@ task runVirusbreakend {
 
   runtime {
     memory:  "~{jobMemory} GB"
-    modules: "~{modules}" "~{modules}"
+    modules: "~{modules} ~{dataModules}"
     cpu:     "~{threads}"
     timeout: "~{timeout}"
   }
