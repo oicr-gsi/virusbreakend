@@ -6,19 +6,30 @@ workflow virusbreakend {
     File inputBam
     File indexBam
     String outputFileNamePrefix
+    String reference
   }
 
   parameter_meta {
     inputBam: "WGS BMPP BAM aligned to genome"
     indexBam: "Index for WGS BMPP Bam file"
     outputFileNamePrefix: "prefix for the output file name"
+    reference: "The genome reference build. For example: hg19, hg38, mm10"
   }
+
+  if (reference == "hg38") {
+          String hg38DataModules = "virusbreakend-db/20210401 hmftools-data/hg38"
+          String hg38Genome = "$HMFTOOLS_DATA_ROOT/hg38_random.fa"
+  }
+
+  String dataModules = select_first([hg38DataModules])
+  String genome = select_first([hg38Genome])
 
   call runVirusbreakend {
     input:
     inputBam = inputBam,
     indexBam = indexBam,
-    outputFileNamePrefix = outputFileNamePrefix
+    outputFileNamePrefix = outputFileNamePrefix,
+    genome = genome
 }
 
   output {
@@ -47,10 +58,11 @@ task runVirusbreakend {
   input {
     File   inputBam
     File   indexBam
-    String modules = "gridss-conda/2.13.2 virusbreakend-db/20210401 hmftools-data/hg38"
     String outputFileNamePrefix
+    String genome
+    String dataModules
+    String modules = "gridss-conda/2.13.2"
     String database = "$VIRUSBREAKEND_DB_ROOT/"
-    String genome = "$HMFTOOLS_DATA_ROOT/hg38_random.fa"
     String gridss = "$GRIDSS_CONDA_ROOT/share/gridss-2.13.2-1/gridss.jar"
     Int threads = 8
     Int jobMemory = 64
@@ -84,7 +96,7 @@ task runVirusbreakend {
 
   runtime {
     memory:  "~{jobMemory} GB"
-    modules: "~{modules}"
+    modules: "~{modules} ~{dataModules}"
     cpu:     "~{threads}"
     timeout: "~{timeout}"
   }
@@ -97,7 +109,7 @@ task runVirusbreakend {
   meta {
     output_meta: {
       outputsummary: "a summary of results from the virusbreakend workflow",
-      integrationbreakpointvcf: "A VCF containing the integration breakpoints",
+      integrationbreakpointvcf: "A VCF containing the integration breakpoints"
     }
   }
 }

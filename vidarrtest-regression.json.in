@@ -1,0 +1,72 @@
+[
+    {
+        "arguments": {
+            "virusbreakend.inputBam": {
+                "contents": {
+                    "configuration": "/.mounts/labs/gsi/testdata/virusbreakend/1.0/input_data/OCT_011237.bam",
+                    "externalIds": [
+                        {
+                            "id": "TEST",
+                            "provider": "TEST"
+                        }
+                    ]
+                },
+                "type": "EXTERNAL"
+            },
+            "virusbreakend.indexBam": {
+                "contents": {
+                    "configuration": "/.mounts/labs/gsi/testdata/virusbreakend/1.0/input_data/OCT_011237.bam.bai",
+                    "externalIds": [
+                        {
+                            "id": "TEST",
+                            "provider": "TEST"
+                        }
+                    ]
+                },
+                "type": "EXTERNAL"
+            },
+            "virusbreakend.outputFileNamePrefix": "OCT_011237",
+            "virusbreakend.runVirusbreakend.modules": "gridss-conda/2.13.2 virusbreakend-db/20210401 hmftools-data/hg38",
+            "virusbreakend.runVirusbreakend.database": "$VIRUSBREAKEND_DB_ROOT/",
+            "virusbreakend.runVirusbreakend.genome": "$HMFTOOLS_DATA_ROOT/hg38_random.fa",
+            "virusbreakend.runVirusbreakend.gridss": "$GRIDSS_CONDA_ROOT/share/gridss-2.13.2-1/gridss.jar",
+            "virusbreakend.runVirusbreakend.threads": null, 
+            "virusbreakend.runVirusbreakend.jobMemory": null,
+            "virusbreakend.runVirusbreakend.jobMemory": null, 
+            "virusbreakend.runVirusbreakend.timeout": null 
+        },
+        "description": "virusbreakend workflow test",
+        "engineArguments": {
+            "write_to_cache": false,
+            "read_from_cache": false
+        },
+        "id": "virusbreakend_test",
+        "metadata": {
+            "virusbreakend.integrationbreakpointvcf": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_virusbreakend_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "virusbreakend.outputsummary": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_virusbreakend_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            }
+        },
+        "validators": [
+            {
+                "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
+                "metrics_compare": "@CHECKOUT@/tests/compare.sh",
+                "output_metrics": "/.mounts/labs/gsi/testdata/virusbreakend/1.0/output_metrics/virusbreakend_test.metrics",
+                "type": "script"
+            }
+        ]
+    }
+]
+

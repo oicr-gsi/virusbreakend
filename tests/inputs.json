@@ -1,0 +1,6 @@
+{
+ "virusbreakend.inputBam": "/.mounts/labs/gsi/testdata/virusbreakend/1.0/input_data/OCT_011237.bam",
+ "virusbreakend.indexBam": "/.mounts/labs/gsi/testdata/virusbreakend/1.0/input_data/OCT_011237.bam.bai",
+ "virusbreakend.outputFileNamePrefix": "OCT_011237",
+ "virusbreakend.reference": "hg38"
+}

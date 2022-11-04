@@ -1,0 +1,18 @@
+## Commands
+This section lists command(s) run by VIRUSBreakend workflow
+
+* Running VIRUSBreakend
+
+VIRUSBreakend is a high-speed viral integration detection tool designed to be incorporated in the whole genome sequence piplines with minimal additional resources. This tool is part of GRIDSS - the Genomic Rearrangement IDentification Software Suite.
+
+<<<
+      set -euo pipefail
+
+      virusbreakend \
+      --jar ~{gridss} \
+      --kraken2db ~{database} \
+      --reference ~{genome} \
+      --output ~{outputFileNamePrefix}.virusbreakend.vcf \
+      ~{inputBam}
+
+  >>>
