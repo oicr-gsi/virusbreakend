@@ -74,6 +74,7 @@ task runVirusbreakend {
     indexBam: "WGS bam index"
     outputFileNamePrefix: "output filename"
     modules: "Names and versions of modules to load"
+    dataModules: "Names and versions of data modules to load"
     genome: "Path to loaded genome"
     database: "a database of viral and bacterial sequences"
     gridss: "the full path to the gridss jar file"

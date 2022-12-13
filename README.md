@@ -25,6 +25,8 @@ Parameter|Value|Description
 `inputBam`|File|WGS BMPP BAM aligned to genome
 `indexBam`|File|Index for WGS BMPP Bam file
 `outputFileNamePrefix`|String|prefix for the output file name
+`reference`|String|The genome reference build. For example: hg19, hg38, mm10
+`runVirusbreakend.dataModules`|String|Names and versions of data modules to load
 
 
 #### Optional workflow parameters:
@@ -35,9 +37,8 @@ Parameter|Value|Default|Description
 #### Optional task parameters:
 Parameter|Value|Default|Description
 ---|---|---|---
-`runVirusbreakend.modules`|String|"gridss-conda/2.13.2 virusbreakend-db/20210401 hmftools-data/hg38"|Names and versions of modules to load
+`runVirusbreakend.modules`|String|"gridss-conda/2.13.2"|Names and versions of modules to load
 `runVirusbreakend.database`|String|"$VIRUSBREAKEND_DB_ROOT/"|a database of viral and bacterial sequences
-`runVirusbreakend.genome`|String|"$HMFTOOLS_DATA_ROOT/hg38_random.fa"|Path to loaded genome
 `runVirusbreakend.gridss`|String|"$GRIDSS_CONDA_ROOT/share/gridss-2.13.2-1/gridss.jar"|the full path to the gridss jar file
 `runVirusbreakend.threads`|Int|8|Requested CPU threads
 `runVirusbreakend.jobMemory`|Int|64|Memory allocated for this job
@@ -49,8 +50,6 @@ Parameter|Value|Default|Description
 Output | Type | Description
 ---|---|---
 `integrationbreakpointvcf`|File|A VCF containing the integration breakpoints
-`kraken2report`|File|Coverage statistics of the virus(es) for which viral integration was run upon
-`coveragestats`|File|Coverage statistics of the virus(es) for which viral integration was run upon
 `outputsummary`|File|a summary of results from the virusbreakend workflow
 
 

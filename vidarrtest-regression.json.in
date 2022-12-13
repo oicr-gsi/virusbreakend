@@ -26,13 +26,14 @@
                 "type": "EXTERNAL"
             },
             "virusbreakend.outputFileNamePrefix": "OCT_011237",
+            "virusbreakend.reference": "hg38",
             "virusbreakend.runVirusbreakend.modules": "gridss-conda/2.13.2 virusbreakend-db/20210401 hmftools-data/hg38",
             "virusbreakend.runVirusbreakend.database": "$VIRUSBREAKEND_DB_ROOT/",
             "virusbreakend.runVirusbreakend.genome": "$HMFTOOLS_DATA_ROOT/hg38_random.fa",
             "virusbreakend.runVirusbreakend.gridss": "$GRIDSS_CONDA_ROOT/share/gridss-2.13.2-1/gridss.jar",
+            "virusbreakend.runVirusbreakend.dataModules": null,
             "virusbreakend.runVirusbreakend.threads": null, 
             "virusbreakend.runVirusbreakend.jobMemory": null,
-            "virusbreakend.runVirusbreakend.jobMemory": null, 
             "virusbreakend.runVirusbreakend.timeout": null 
         },
         "description": "virusbreakend workflow test",
@@ -69,4 +70,3 @@
         ]
     }
 ]
-
