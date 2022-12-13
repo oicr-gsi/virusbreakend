@@ -21,7 +21,7 @@ workflow virusbreakend {
           String hg38Genome = "$HMFTOOLS_DATA_ROOT/hg38_random.fa"
   }
 
-  String dataModules = select_first([hg38DataModules])
+  String data_Modules = select_first([hg38DataModules])
   String genome = select_first([hg38Genome])
 
   call runVirusbreakend {
@@ -29,7 +29,8 @@ workflow virusbreakend {
     inputBam = inputBam,
     indexBam = indexBam,
     outputFileNamePrefix = outputFileNamePrefix,
-    genome = genome
+    genome = genome,
+    dataModules = data_modules
 }
 
   output {
