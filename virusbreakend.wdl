@@ -30,7 +30,7 @@ workflow virusbreakend {
     indexBam = indexBam,
     outputFileNamePrefix = outputFileNamePrefix,
     genome = genome,
-    dataModules = data_modules
+    dataModules = data_Modules
 }
 
   output {
