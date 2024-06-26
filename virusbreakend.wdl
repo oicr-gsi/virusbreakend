@@ -52,6 +52,16 @@ workflow virusbreakend {
        url: "https://github.com/PapenfussLab/gridss"
      }
     ]
+    output_meta: {
+      integrationbreakpointvcf: {
+        description: "Breakpoints, vcf file",
+        vidarr_label: "integrationbreakpointvcf"
+      },
+      outputsummary: {
+        description: "Output summary",
+        vidarr_label: "outputsummary"
+      }
+    }
   }
 }
 
@@ -108,10 +118,5 @@ task runVirusbreakend {
       File outputsummary = "~{outputFileNamePrefix}.virusbreakend.vcf.summary.tsv"
   }
 
-  meta {
-    output_meta: {
-      outputsummary: "a summary of results from the virusbreakend workflow",
-      integrationbreakpointvcf: "A VCF containing the integration breakpoints"
-    }
-  }
+  
 }
