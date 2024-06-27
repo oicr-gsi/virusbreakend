@@ -26,7 +26,6 @@ Parameter|Value|Description
 `indexBam`|File|Index for WGS BMPP Bam file
 `outputFileNamePrefix`|String|prefix for the output file name
 `reference`|String|The genome reference build. For example: hg19, hg38, mm10
-`runVirusbreakend.dataModules`|String|Names and versions of data modules to load
 
 
 #### Optional workflow parameters:
@@ -47,20 +46,20 @@ Parameter|Value|Default|Description
 
 ### Outputs
 
-Output | Type | Description
----|---|---
-`integrationbreakpointvcf`|File|A VCF containing the integration breakpoints
-`outputsummary`|File|a summary of results from the virusbreakend workflow
+Output | Type | Description | Labels
+---|---|---|---
+`integrationbreakpointvcf`|File|{'description': 'A VCF containing the integration breakpoints', 'vidarr_label': 'integrationbreakpointvcf'}|
+`outputsummary`|File|{'description': 'a summary of results from the virusbreakend workflow', 'vidarr_label': 'outputsummary'}|
 
 
 ## Commands
- This section lists command(s) run by VIRUSBreakend workflow
+This section lists command(s) run by VIRUSBreakend workflow
  
- * Running VIRUSBreakend
+* Running VIRUSBreakend
  
- VIRUSBreakend is a high-speed viral integration detection tool designed to be incorporated in the whole genome sequence piplines with minimal additional resources. This tool is part of GRIDSS - the Genomic Rearrangement IDentification Software Suite.
+VIRUSBreakend is a high-speed viral integration detection tool designed to be incorporated in the whole genome sequence piplines with minimal additional resources. This tool is part of GRIDSS - the Genomic Rearrangement IDentification Software Suite.
  
- <<<
+```
        set -euo pipefail
  
        virusbreakend \
@@ -70,8 +69,9 @@ Output | Type | Description
        --output ~{outputFileNamePrefix}.virusbreakend.vcf \
        ~{inputBam}
  
-   >>>
- ## Support
+```
+
+## Support
 
 For support, please file an issue on the [Github project](https://github.com/oicr-gsi) or send an email to gsi@oicr.on.ca .
 
