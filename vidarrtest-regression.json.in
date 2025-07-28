@@ -3,7 +3,7 @@
         "arguments": {
             "virusbreakend.inputBam": {
                 "contents": {
-                    "configuration": "/.mounts/labs/gsi/testdata/virusbreakend/1.0/input_data/OCT_011237.bam",
+                    "configuration": "/.mounts/labs/gsi/testdata/virusBreakEnd/test_inputs/OCT_Test.bam",
                     "externalIds": [
                         {
                             "id": "TEST",
@@ -15,7 +15,7 @@
             },
             "virusbreakend.indexBam": {
                 "contents": {
-                    "configuration": "/.mounts/labs/gsi/testdata/virusbreakend/1.0/input_data/OCT_011237.bam.bai",
+                    "configuration": "/.mounts/labs/gsi/testdata/virusBreakEnd/test_inputs/OCT_Test.bam.bai",
                     "externalIds": [
                         {
                             "id": "TEST",
@@ -25,7 +25,7 @@
                 },
                 "type": "EXTERNAL"
             },
-            "virusbreakend.outputFileNamePrefix": "OCT_011237",
+            "virusbreakend.outputFileNamePrefix": "OCT_Test01",
             "virusbreakend.reference": "hg38",
             "virusbreakend.runVirusbreakend.modules": "gridss-conda/2.13.2 virusbreakend-db/20210401 hmftools-data/hg38",
             "virusbreakend.runVirusbreakend.database": "$VIRUSBREAKEND_DB_ROOT/",
@@ -64,7 +64,7 @@
             {
                 "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
                 "metrics_compare": "@CHECKOUT@/tests/compare.sh",
-                "output_metrics": "/.mounts/labs/gsi/testdata/virusbreakend/1.0/output_metrics/virusbreakend_test.metrics",
+                "output_metrics": "/.mounts/labs/gsi/testdata/virusBreakEnd/output_metrics/workflow_test_01.metrics",
                 "type": "script"
             }
         ]
